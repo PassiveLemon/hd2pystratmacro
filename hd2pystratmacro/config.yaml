@@ -1,0 +1,14 @@
+# Structure format:
+# main:
+#   stratagem: "KEY_*"
+
+# Example format:
+# main:
+#   reinforce: "KEY_Y"
+
+# Available stratagems:
+# WIP
+
+main:
+  reinforce: "KEY_N"
+  resupply: "KEY_M"

@@ -7,7 +7,7 @@ with python3Packages;
 
 buildPythonApplication rec {
   pname = "hd2pystratmacro";
-  version = "0.1.0";
+  version = "0.2.0";
 
   src = ./.;
 
@@ -17,6 +17,7 @@ buildPythonApplication rec {
 
   propagatedBuildInputs = [
     evdev
+    pyyaml
   ];
   
   doCheck = false;

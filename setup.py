@@ -6,7 +6,7 @@ with open("./requirements.txt", "r") as requirements_file:
 
 setup(
   name="hd2pystratmacro",
-  version="0.1.0",
+  version="0.2.0",
   description="A Python based macro script for Helldivers 2",
   url="http://github.com/passivelemon/hd2pystratmacro/",
   author="PassiveLemon",

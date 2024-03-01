@@ -1,3 +1,4 @@
+include hd2pystratmacro/config.yaml
 include requirements.txt
 include LICENSE
 include MANIFEST.in
