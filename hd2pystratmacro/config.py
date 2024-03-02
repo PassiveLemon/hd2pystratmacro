@@ -1,10 +1,13 @@
 import argparse
 import os
+import pwd
 
 from evdev import ecodes as e
 import yaml
 
-user: str = os.getenv("SUDO_USER")
+user: str = os.getlogin()
+user_uid: int = pwd.getpwnam(user).pw_uid
+user_gid: int = pwd.getpwnam(user).pw_gid
 user_config_dir: str = os.getenv("XDG_CONFIG_HOME", f"/home/{user}/.config/hd2pystratmacro")
 user_config_file: str = os.path.join(user_config_dir, "config.yaml")
 source_install_path: str = os.path.dirname(os.path.realpath(__file__))
@@ -20,9 +23,11 @@ except FileNotFoundError:
   if arguments.file is user_config_file:
     print(f"Configuration file does not exist at XDG_CONFIG: {user_config_file}, generating...")
     os.makedirs(user_config_dir, exist_ok=True)
+    os.chown(user_config_dir, user_uid, user_gid)
     with open(user_config_file, 'w') as user, open (source_config_file, "r") as source:
       for line in source:
         user.write(line)
+      os.chown(user_config_file, user_uid, user_gid)
   else:
     raise Exception(f"Configuration file does not exist: {arguments.file}")
 except IsADirectoryError:

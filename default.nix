@@ -7,7 +7,7 @@ with python3Packages;
 
 buildPythonApplication rec {
   pname = "hd2pystratmacro";
-  version = "1.0.0";
+  version = "1.0.1";
 
   src = ./.;
 
