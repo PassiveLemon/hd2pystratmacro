@@ -7,81 +7,9 @@
 #   reload: "KEY_P"
 #   reinforce: "KEY_Y"
 
-# View available Stratagems below the configuration
+# View available Stratagems in the README
 
 main:
   reload: "KEY_P"
   reinforce: "KEY_N"
   resupply: "KEY_M"
-
-# Available Stratagems:
-# reload: Hot-reload the configuration file
-
-### General
-# reinforce: Reinforce
-# resupply: Resupply
-# sos: SOS Beacon
-# hellbomb: Hellbomb
-# flare: Orbital Illumination Flare
-# flag: Super Earth Flag
-# seaf: SEAF Artillery
-
-### Patriotic Administration Center
-# machine: Machine Gun
-# antimaterial: Anti-Material Rifle
-# stalwart: Stalwart
-# expendable: Expendable Anti-Tank
-# recoilless: Recoilless Rifle
-# flamethrower: Flamethrower
-# autocannon: Autocannon
-# railgun: Railgun
-# spear: Spear
-
-### Orbital Cannons
-# orbital_gatling: Orbital Gatling Strike
-# orbital_airburst: Orbital Airburst Strike
-# orbital_120mm: Orbital 120MM HE Barrage
-# orbital_380mm: Orbital 380MM HE Barrage
-# orbital_walking: Orbital Walking Barrage
-# orbital_laser: Orbital Laser
-# orbital_railcannon: Orbital Railcannon Strike
-
-### Hangar
-# eagle_rearm: Eagle Rearm
-# eagle_strafing: Eagle Strafing Run
-# eagle_airstrike: Eagle Airstrike
-# eagle_cluster: Eagle Cluster Bomb
-# eagle_napalm: Eagle Napalm Airstrike
-# jump_pack: Jump Pack
-# eagle_smoke: Eagle Smoke Strike
-# eagle_110mm: Eagle 110MM Rocket Pods
-# eagle_500kg: Eagle 500KG Bomb
-
-### Bridge
-# orbital_precision: Orbital Precision Strike
-# orbital_gas: Orbital Gas Strike
-# orbital_ems: Orbital EMS Strike
-# orbital_smoke: Orbital Smoke Strike
-# hmg_placement: HMG Placement
-# shield_relay: Shield Generator Relay
-# tesla_tower: Tesla Tower
-
-### Engineering Bay
-# minefield: Anti-Personnel Minefield
-# supply_pack: Supply Pack
-# grenade_launcher: Grenade Launcher
-# laser_cannon: Laser Cannon
-# incendiary_mines: Incendiary Mines
-# guard_dog_rover: Guard Dog Rover
-# ballistic_shield: Ballistic Shield Backpack
-# arc_thrower: Arc Thrower
-# shield_generator: Shield Generator Pack
-
-### Robotics Workshop
-# machine_sentry: Machine Gun Sentry
-# gatling_sentry: Gatling Sentry
-# mortar_sentry: Mortar Sentry
-# guard_dog: Guard Dog
-# autocannon_sentry: Autocannon Sentry
-# rocket_sentry: Rocket Sentry
-# ems_sentry: EMS Mortar Sentry
