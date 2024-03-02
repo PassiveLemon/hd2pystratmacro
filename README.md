@@ -1,5 +1,5 @@
 # hd2pystratmacro
-A Python based macro script for Helldivers 2 </br>
+A Python based macro script for HELLDIVERS 2 </br>
 
 You can assign Stratagem macros to keybinds. </br>
 
