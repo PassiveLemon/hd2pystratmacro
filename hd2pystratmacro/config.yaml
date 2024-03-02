@@ -4,11 +4,15 @@
 
 # Example format:
 # main:
+#   reload: "KEY_P"
 #   reinforce: "KEY_Y"
 
-# Available stratagems:
-# WIP
+# View available Stratagems below the configuration
 
 main:
+  reload: "KEY_P"
   reinforce: "KEY_N"
   resupply: "KEY_M"
+
+# Available Stratagems:
+# reload: Hot-reload the configuration file

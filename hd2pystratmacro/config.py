@@ -1,6 +1,5 @@
 import argparse
 import os
-from typing import Dict, List
 
 from evdev import ecodes as e
 import yaml
@@ -20,7 +19,7 @@ try:
 except FileNotFoundError:
   if arguments.file is user_config_file:
     print(f"Configuration file does not exist at XDG_CONFIG: {user_config_file}, generating...")
-    os.makedirs(user_config_dir)
+    os.makedirs(user_config_dir, exist_ok=True)
     with open(user_config_file, 'w') as user, open (source_config_file, "r") as source:
       for line in source:
         user.write(line)
@@ -39,8 +38,7 @@ if os.geteuid() != 0:
 
 print(f"Configuration file: {arguments.file}")
 
-stratagem_dict: Dict[str, List[int]] = {
-  # WIP
+stratagem_dict: dict[str, list[int]] = {
   # General
   "reinforce": [e.KEY_W, e.KEY_S, e.KEY_D, e.KEY_A, e.KEY_W],
   "resupply": [e.KEY_S, e.KEY_S, e.KEY_W, e.KEY_D],
@@ -49,31 +47,65 @@ stratagem_dict: Dict[str, List[int]] = {
   "flare": [e.KEY_D, e.KEY_D, e.KEY_A, e.KEY_A],
   "flag": [e.KEY_S, e.KEY_W, e.KEY_S, e.KEY_W],
   "seaf": [e.KEY_D, e.KEY_W, e.KEY_W, e.KEY_S],
-  # PAC
+  # Patriotic Administration Center
+  "machine": [],
+  "antimaterial": [],
+  "stalwart": [],
+  "expendable": [],
+  "recoilless": [],
+  "flamethrower": [],
   "autocannon": [e.KEY_S, e.KEY_A, e.KEY_S, e.KEY_W, e.KEY_W, e.KEY_D],
   "railgun": [e.KEY_S, e.KEY_D, e.KEY_S, e.KEY_W, e.KEY_A, e.KEY_D],
-  # Orbital
-  "laser": [e.KEY_D, e.KEY_S, e.KEY_W, e.KEY_D, e.KEY_S],
+  "spear": [],
+  # Orbital Cannons
+  "orbital_gatling": [],
+  "orbital_airburst": [],
+  "orbital_120mm": [],
+  "orbital_380mm": [],
+  "orbital_walking": [],
+  "orbital_laser": [e.KEY_D, e.KEY_S, e.KEY_W, e.KEY_D, e.KEY_S],
+  "orbital_railcannon": [],
   # Hangar
-  "rearm": [e.KEY_W, e.KEY_W, e.KEY_A, e.KEY_W, e.KEY_D],
-  "airstrike": [e.KEY_W, e.KEY_D, e.KEY_S, e.KEY_D],
-  "cluster": [e.KEY_W, e.KEY_D, e.KEY_S, e.KEY_S, e.KEY_D],
-  "500kg": [e.KEY_W, e.KEY_D, e.KEY_S, e.KEY_S, e.KEY_S],
+  "eagle_rearm": [e.KEY_W, e.KEY_W, e.KEY_A, e.KEY_W, e.KEY_D],
+  "eagle_strafing": [],
+  "eagle_airstrike": [e.KEY_W, e.KEY_D, e.KEY_S, e.KEY_D],
+  "eagle_cluster": [e.KEY_W, e.KEY_D, e.KEY_S, e.KEY_S, e.KEY_D],
+  "eagle_napalm": [],
+  "jump_pack": [],
+  "eagle_smoke": [],
+  "eagle_110mm": [],
+  "eagle_500kg": [e.KEY_W, e.KEY_D, e.KEY_S, e.KEY_S, e.KEY_S],
   # Bridge
-  "precision": [e.KEY_D, e.KEY_D, e.KEY_W],
-  # Engineering
+  "orbital_precision": [e.KEY_D, e.KEY_D, e.KEY_W],
+  "orbital_gas": [],
+  "orbital_ems": [],
+  "orbital_smoke": [],
+  "hmg_replacement": [],
+  "shield_relay": [],
+  "tesla_tower": [],
+  # Engineering Bay
+  "minefield": [],
+  "supply_pack": [],
   "grenade_launcher": [e.KEY_S, e.KEY_A, e.KEY_W, e.KEY_A, e.KEY_S],
+  "laser_cannon": [],
+  "incendiary_mines": [],
+  "guard_dog_rover": [],
+  "ballistic_shield": [],
+  "arc_thrower": [],
   "shield_generator": [e.KEY_S, e.KEY_W, e.KEY_A, e.KEY_D, e.KEY_A, e.KEY_D],
-  # Robotics
+  # Robotics Workshop
+  "machine_sentry": [],
+  "gatling_sentry": [],
   "mortar_sentry": [e.KEY_S, e.KEY_W, e.KEY_D, e.KEY_D, e.KEY_S],
+  "guard_dog": [],
   "autocannon_sentry": [e.KEY_S, e.KEY_W, e.KEY_D, e.KEY_W, e.KEY_A, e.KEY_W],
+  "rocket_sentry": [],
   "ems_sentry": [e.KEY_S, e.KEY_S, e.KEY_W, e.KEY_W, e.KEY_A],
-  "": [],
 }
 
-key_press_dict: Dict[str, str] = { }
+key_press_dict: dict[str, str] = { }
 
-yaml_config: Dict = yaml.safe_load(open(arguments.file))
+yaml_config: dict = yaml.safe_load(open(arguments.file))
 for stratagem, stratagem_key in yaml_config["main"].items():
   key_press_dict[stratagem_key] = stratagem
   print(f"{stratagem_key} - {stratagem}")
