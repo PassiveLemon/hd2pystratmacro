@@ -21,6 +21,8 @@ I am not responsible for any bans or data loss as a result of using this. This w
 - Edit the generated config file in your `~/.config/hd2pystratmacro/config.yaml`. You can also supply a config file with `-f <path to config.yaml`. Please read the configuration below, you need to configure the file to enable functionality. </br>
   - Arguments can be found by tacking `-h` or `--help`
 
+When running, hold ctrl and press your keybind to activate the macro.
+
 # Configuration (config.yaml)
 ## Structure format:
 ```yaml
