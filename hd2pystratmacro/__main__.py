@@ -9,7 +9,7 @@ import yaml
 
 from .config import arguments, stratagem_dict, key_press_dict
 
-dev = InputDevice("/dev/input/event0")
+dev: InputDevice = InputDevice("/dev/input/event0")
 
 def key_press(key_press: int) -> None:
   def gaussian(min: int, max: int, sig: int, mu: int) -> float:
@@ -18,7 +18,7 @@ def key_press(key_press: int) -> None:
       if min <= value <= max:
         return value
   random_key_press_sleep: int = gaussian(36, 112, 28, 81)
-  ui = UInput.from_device(dev)
+  ui: UInput = UInput.from_device(dev)
   ui.write(e.EV_KEY, key_press, 1)
   ui.syn()
   time.sleep(random_key_press_sleep / 1000)
@@ -31,7 +31,7 @@ def main() -> None:
   try:
     for event in dev.read_loop():
       if event.type == e.EV_KEY:
-        key_event: str = categorize(event)
+        key_event: categorize = categorize(event)
         if key_event.keycode == "KEY_LEFTCTRL":
           if (key_event.keystate == key_event.key_down) or (key_event.keystate == key_event.key_hold):
             ctrl_hold = True
@@ -41,7 +41,7 @@ def main() -> None:
           if (key_event.keystate == key_event.key_down) or (key_event.keystate == key_event.key_hold):
             if key_event.keycode in key_press_dict:
               if key_press_dict[key_event.keycode] == "reload":
-                config_module = importlib.import_module(".config", package=__package__)
+                config_module: importlib = importlib.import_module(".config", package=__package__)
                 importlib.reload(config_module)
                 print("Config reloaded")
               else:
