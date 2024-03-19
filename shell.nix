@@ -1,3 +1,10 @@
 { pkgs ? import <nixpkgs> { } }:
 
-pkgs.callPackage ./default.nix { }
+pkgs.mkShellNoCC {
+  packages = with pkgs; [
+    (python311.withPackages (ps: with ps; [
+      evdev
+      pyyaml
+    ]))
+  ];
+}

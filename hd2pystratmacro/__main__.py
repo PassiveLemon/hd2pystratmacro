@@ -1,13 +1,10 @@
 import importlib
-import os
 import random
-import threading
 import time
 
 from evdev import categorize, ecodes as e, InputDevice, UInput
-import yaml
 
-from .config import arguments, stratagem_dict, key_press_dict
+from .config import stratagem_dict, key_press_dict
 
 dev: InputDevice = InputDevice("/dev/input/event0")
 
@@ -17,7 +14,7 @@ def key_press(key_press: int) -> None:
       value: float = random.gauss(mu, sig)
       if min <= value <= max:
         return value
-  random_key_press_sleep: int = gaussian(36, 112, 28, 81)
+  random_key_press_sleep: float = gaussian(36, 112, 28, 81)
   ui: UInput = UInput.from_device(dev)
   ui.write(e.EV_KEY, key_press, 1)
   ui.syn()
@@ -31,7 +28,7 @@ def main() -> None:
   try:
     for event in dev.read_loop():
       if event.type == e.EV_KEY:
-        key_event: categorize = categorize(event)
+        key_event: function = categorize(event)
         if key_event.keycode == "KEY_LEFTCTRL":
           if (key_event.keystate == key_event.key_down) or (key_event.keystate == key_event.key_hold):
             ctrl_hold = True
@@ -48,7 +45,7 @@ def main() -> None:
                 print(f"{key_event.keycode} - {key_press_dict[key_event.keycode]} - {stratagem_dict[key_press_dict[key_event.keycode]]}")
                 for input in stratagem_dict[key_press_dict[key_event.keycode]]:
                   key_press(input)
-  except:
+  except KeyboardInterrupt:
     exit()
 
 if __name__ == "__main__":

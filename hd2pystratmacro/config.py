@@ -15,7 +15,7 @@ source_config_file: str = os.path.join(source_install_path, "config.yaml")
 
 parser: argparse = argparse.ArgumentParser()
 parser.add_argument("-f", "--file", default=user_config_file, help="Location of configuration file.")
-arguments: parser = parser.parse_args()
+arguments: argparse = parser.parse_args()
 
 try:
   yaml.safe_load(open(arguments.file))

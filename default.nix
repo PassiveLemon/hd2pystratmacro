@@ -4,10 +4,12 @@
 }:
 
 with python3Packages;
-
+let
+  shell = import ./shell.nix { inherit pkgs; };
+in
 buildPythonApplication rec {
   pname = "hd2pystratmacro";
-  version = "1.0.1";
+  version = "1.0.2";
 
   src = ./.;
 
@@ -15,10 +17,7 @@ buildPythonApplication rec {
     setuptools
   ];
 
-  propagatedBuildInputs = [
-    evdev
-    pyyaml
-  ];
+  propagatedBuildInputs = shell;
   
   doCheck = false;
 
