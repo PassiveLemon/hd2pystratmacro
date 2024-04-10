@@ -2,22 +2,20 @@
   lib ? pkgs.lib,
   python3Packages ? pkgs.python3Packages
 }:
-
-with python3Packages;
-let
-  shell = import ./shell.nix { inherit pkgs; };
-in
-buildPythonApplication rec {
+python3Packages.buildPythonApplication rec {
   pname = "hd2pystratmacro";
-  version = "1.0.2";
+  version = "1.0.3";
 
   src = ./.;
 
-  nativeBuildInputs = [
+  nativeBuildInputs = with python3Packages; [
     setuptools
   ];
 
-  propagatedBuildInputs = shell;
+  propagatedBuildInputs = with python3Packages; [
+    evdev
+    pyyaml
+  ];
   
   doCheck = false;
 
