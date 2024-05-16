@@ -1,50 +1,10 @@
-import importlib
-import random
-import time
-
-from evdev import categorize, ecodes as e, InputDevice, UInput
-
-from .config import stratagem_dict, key_press_dict
-
-dev: InputDevice = InputDevice("/dev/input/event0")
-
-def key_press(key_press: int) -> None:
-  def gaussian(min: int, max: int, sig: int, mu: int) -> float:
-    while True:
-      value: float = random.gauss(mu, sig)
-      if min <= value <= max:
-        return value
-  random_key_press_sleep: float = gaussian(36, 112, 28, 81)
-  ui: UInput = UInput.from_device(dev)
-  ui.write(e.EV_KEY, key_press, 1)
-  ui.syn()
-  time.sleep(random_key_press_sleep / 1000)
-  ui.write(e.EV_KEY, key_press, 0)
-  ui.syn()
-  ui.close()
+from .config import input_device
+from .key_handler import handle_key_event
 
 def main() -> None:
-  ctrl_hold: bool = False
   try:
-    for event in dev.read_loop():
-      if event.type == e.EV_KEY:
-        key_event: function = categorize(event)
-        if key_event.keycode == "KEY_LEFTCTRL":
-          if (key_event.keystate == key_event.key_down) or (key_event.keystate == key_event.key_hold):
-            ctrl_hold = True
-          else:
-            ctrl_hold = False
-        if ctrl_hold:
-          if (key_event.keystate == key_event.key_down) or (key_event.keystate == key_event.key_hold):
-            if key_event.keycode in key_press_dict:
-              if key_press_dict[key_event.keycode] == "reload":
-                config_module: importlib = importlib.import_module(".config", package=__package__)
-                importlib.reload(config_module)
-                print("Config reloaded")
-              else:
-                print(f"{key_event.keycode} - {key_press_dict[key_event.keycode]} - {stratagem_dict[key_press_dict[key_event.keycode]]}")
-                for input in stratagem_dict[key_press_dict[key_event.keycode]]:
-                  key_press(input)
+    for event in input_device.read_loop():
+      handle_key_event(event)
   except KeyboardInterrupt:
     exit()
 
