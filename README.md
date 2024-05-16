@@ -3,8 +3,8 @@ A Python based macro script for HELLDIVERS 2 </br>
 
 You can assign Stratagem macros to keybinds. </br>
 
-## Disclaimer
-I am not responsible for any bans or data loss as a result of using this. This was a project for me to learn Python. If you are worried about getting banned, don't use it and be a legitimate player :) </br>
+> [!CAUTION]
+> I am not responsible for any bans or data loss as a result of using this. This was a project for me to learn Python. If you are worried about getting banned, don't use it and be a legitimate player :) </br>
 
 # Dependencies
 - Linux. <b>This is not supported on Windows or MacOS</b> though it may in the future.
@@ -38,7 +38,7 @@ main:
 - You can define any Stratagems without duplicates.
 
 ## Available Stratagems:
-- `reload`: Hot-reload the configuration file to change key-bind without restarting the script
+- `reload`: Hot-reload the configuration file to change keybind without restarting the script
 
 ### General
 - `reinforce`: Reinforce
@@ -109,4 +109,4 @@ main:
 - `rocket_sentry`: Rocket Sentry
 - `ems_sentry`: EMS Mortar Sentry
 
-You can have other sets of key-binds but the script currently only reads from `main`. Definable sets will be implemented in the future.
+You can have other sets of keybinds but the script currently only reads from `main`. Definable sets will be implemented in the future.
