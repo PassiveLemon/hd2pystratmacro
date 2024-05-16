@@ -16,7 +16,7 @@ python3Packages.buildPythonApplication rec {
     evdev
     pyyaml
   ];
-  
+
   doCheck = false;
 
   meta = with lib; {
@@ -26,5 +26,6 @@ python3Packages.buildPythonApplication rec {
     license = licenses.gpl3;
     maintainers = with maintainers; [ passivelemon ];
     platforms = [ "x86_64-linux" ];
+    mainProgram = "hd2pystratmacro";
   };
 }
