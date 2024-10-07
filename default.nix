@@ -1,18 +1,20 @@
-{ pkgs ? import <nixpkgs> { system = builtins.currentSystem; },
-  lib ? pkgs.lib,
-  python3Packages ? pkgs.python3Packages
+{ lib
+, buildPythonApplication
+, evdev
+, pyyaml
+, setuptools
 }:
-python3Packages.buildPythonApplication rec {
+buildPythonApplication rec {
   pname = "hd2pystratmacro";
   version = "1.0.3";
 
   src = ./.;
 
-  nativeBuildInputs = with python3Packages; [
+  nativeBuildInputs = [
     setuptools
   ];
 
-  propagatedBuildInputs = with python3Packages; [
+  propagatedBuildInputs = [
     evdev
     pyyaml
   ];
@@ -29,3 +31,4 @@ python3Packages.buildPythonApplication rec {
     mainProgram = "hd2pystratmacro";
   };
 }
+
