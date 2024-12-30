@@ -1,24 +1,24 @@
 # hd2pystratmacro
-A Python based macro script for HELLDIVERS 2 </br>
+A Python based macro script for HELLDIVERS 2
 
-You can assign Stratagem macros to keybinds. </br>
+Bind Stratagem macros to keybinds.
 
 > [!CAUTION]
-> I am not responsible for any bans or data loss as a result of using this. This was a project for me to learn Python. If you are worried about getting banned, don't use it and be a legitimate player :) </br>
+> I am not responsible for any bans or data loss as a result of using this. This was a project for me to learn Python. If you are worried about getting banned, don't use it and be a legitimate player :)
 
 # Dependencies
 - Linux. <b>This is not supported on Windows or MacOS</b> though it may in the future.
 - X11. This is not supported on Wayland.
-- Sudo. This requires access to `/dev`.
+- Sudo. This requires access to input devices.
 - Python packages: `evdev pyyaml`
 
 # Usage
 ### Nix:
-- You can get the package in my [flake repository](https://github.com/PassiveLemon/lemonake). </br>
+- You can get the package in my [flake repository](https://github.com/PassiveLemon/lemonake).
 ### Source:
 - Clone the repo
 - Run `sudo python3 __main__.py`
-- Edit the generated config file in your `~/.config/hd2pystratmacro/config.yaml`. You can also supply a config file with `-f <path to config.yaml`. Please read the configuration below, you need to configure the file to enable functionality. </br>
+- Edit the generated config file in your `~/.config/hd2pystratmacro/config.yaml`. You can also supply a config file with `-f <path to config.yaml`. Please read the configuration below, you need to configure the file to enable functionality.
   - Arguments can be found by tacking `-h` or `--help`
 
 When running, hold ctrl and press your keybind to activate the macro.
@@ -110,3 +110,4 @@ main:
 - `ems_sentry`: EMS Mortar Sentry
 
 You can have other sets of keybinds but the script currently only reads from `main`. Definable sets will be implemented in the future.
+

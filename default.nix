@@ -10,6 +10,8 @@ buildPythonApplication rec {
 
   src = ./.;
 
+  strictDeps = true;
+
   nativeBuildInputs = [
     setuptools
   ];
